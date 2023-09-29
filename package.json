@@ -13,7 +13,10 @@
     "@sap-cloud-sdk/http-client": "^2.5.0",
     "@sap/cds": "^6",
     "@sap/cds-dk": "^7",
-    "express": "^4"
+    "express": "^4",
+    "@sap/cds-hana": "^2",
+    "@sap/xssec": "^3",
+    "passport": "^0"
   },
   "devDependencies": {
     "@sap/ux-specification": "^1.102.26",
@@ -49,6 +52,9 @@
     }
   },
   "cds": {
+     "hana": {
+        "deploy-format": "hdbtable"
+    },
     "requires": {
       "API_BUSINESS_PARTNER": {
         "kind": "odata-v2",
@@ -56,11 +62,12 @@
         "credentials": {
           "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER/"
         }
+      },
+      "[production]": {
+        "db": "hana",
+        "auth": "xsuaa"
       }
-    },
-    "hana": {
-      "deploy-format": "hdbtable"
-    }
+    }    
   },
   "sapux": [
     "app/risks"
